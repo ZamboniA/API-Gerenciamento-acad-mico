@@ -22,8 +22,8 @@ router.get("/professor/:nome", async (req, res) => {
                 ['nome', 'ASC']
             ]
         })
-        if(professor){
-            res.status(201).json(professor);
+        if(professor.length > 0){
+            res.status(200).json(professor);
         } else {
             res.status(404).json({ message: "Professor não encontrado."});
         }
@@ -70,7 +70,7 @@ router.delete("/professor/:id", async (req,res) => {
     try{
         if(deletarProfessor){
             await deletarProfessor.destroy();
-            res.status(200).json({ message: "Professor excluido com sucesso." })
+            res.status(201).json({ message: "Professor excluido com sucesso." })
         }else{
             res.status(404).json({ message: "Professor não encontrada." })
         }

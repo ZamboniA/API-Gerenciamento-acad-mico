@@ -1,7 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { connection } = require("./database");
 const Turma = require("./turma");
-// const Turma = require("./turma");
 
 
 const Professor = connection.define("professor", {
@@ -16,7 +15,9 @@ const Professor = connection.define("professor", {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
+        validate:{ 
+            isEmail: true}
     },
 });
 

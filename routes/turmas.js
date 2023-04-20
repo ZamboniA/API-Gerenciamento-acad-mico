@@ -15,8 +15,8 @@ router.get("/turmas/:ano", async (req, res) => {
         const turmas = await Turma.findAll({
             where: { ano: req.params.ano }
         })
-        if (turmas) {
-            res.status(201).json(turmas);
+        if (turmas.length > 0 && turmas.length < 5) {
+            res.status(200).json(turmas);
         } else {
             res.status(404).json({ message: "Turma não encontrada." });
         }
@@ -30,7 +30,7 @@ router.post("/turmas", async (req, res) => {
     const { ensino, periodo, turma, serie, ano, sala_aula, professorId } = req.body;
     try {
         const turmaProfessor = await Professor.findByPk(professorId)
-        if (turmaProfessor) {
+        if (turmaProfessor ) {
             const novaTurma = await Turma.create(
                 { ensino, periodo, turma, serie, ano, sala_aula, professorId });
             const resposta = {
@@ -74,7 +74,7 @@ router.delete("/turmas/:id", async (req, res) => {
     try {
         if (deletarTurma) {
             await deletarTurma.destroy();
-            res.status(200).json({ message: "Turma excluida com sucesso." })
+            res.status(201).json({ message: "Turma excluida com sucesso." })
         } else {
             res.status(404).json({ message: "Turma não encontrada." })
         }

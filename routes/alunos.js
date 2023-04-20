@@ -32,7 +32,7 @@ router.get("/alunos/:nome", async (req, res) => {
 router.get("/alunos", async (req, res) => {
     const alunos = await Aluno.findAll()
     res.status(200).json(alunos)
-})
+});
 
 router.post("/alunos", async (req, res) => {
     const { nome, telefone, email, matricula, ano_ingresso, turmaId } = req.body;
@@ -47,7 +47,7 @@ router.post("/alunos", async (req, res) => {
                 };
                 res.status(201).json(resposta);
         } else {
-            res.status(404).json({ message: "Turma não encontrado." });
+            res.status(404).json({ message: "Turma não encontrada." });
         }        
     }
     catch (err) {
@@ -65,7 +65,7 @@ router.put("/alunos/:matricula", async (req, res) => {
 
     if(editarAluno){
         await editarAluno.update({nome, telefone, email, ano_ingresso})
-        res.status(200).json(editarAluno)
+        res.status(201).json(editarAluno)
     }else{
         res.status(404).json({ message: "Aluno não encontrado" })
     }
@@ -76,14 +76,12 @@ router.put("/alunos/:matricula", async (req, res) => {
 })
 
 router.delete("/alunos/:matricula", async (req, res) => {
-    const { id } = req.params
-
     try {
         const deletarAluno = await Aluno.findOne({ where: { matricula: req.params.matricula }})
 
         if(deletarAluno){
             await deletarAluno.destroy()
-            res.status(200).json({ message: "Aluno deletado com sucesso!" })
+            res.status(201).json({ message: "Aluno deletado com sucesso!" })
         }else{
             res.status(404).json({message: "Aluno não encontrado!"})
         }

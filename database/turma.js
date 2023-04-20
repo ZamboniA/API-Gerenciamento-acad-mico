@@ -2,6 +2,7 @@ const {DataTypes} = require("sequelize");
 const {connection } = require ("./database");
 const Aluno = require("./aluno");
 
+
 const Turma = connection.define("turma", {
     ensino: { // ensino: basico, fundamental, médio;
         type: DataTypes.STRING,
