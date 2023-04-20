@@ -1,0 +1,30 @@
+{
+  "name": "squad1_escopo1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.2.3",
+    "sequelize": "^6.31.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZamboniA/Squad1_Escopo1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZamboniA/Squad1_Escopo1/issues"
+  },
+  "homepage": "https://github.com/ZamboniA/Squad1_Escopo1#readme"
+}
