@@ -1,4 +1,4 @@
-# Squad1_Escopo1
+# API GERENCIAMENTO ACADÊMICO
 
 ###       Construir uma API com MySQL que gerencia a parte acadêmica de uma escola.
 ####       
